@@ -1,0 +1,41 @@
+<h4>Reactive form</h4>
+<form (ngSubmit)="onSubmit()" #thisForm="ngForm" [formGroup]="form">
+  <label for="inpname1"><span class="asterisk">*</span>name:</label>
+  <input id="inpname1" formControlName="name">
+  <div class="validation-message"
+       *ngIf="(form.controls['name'].touched || form.controls['name'].dirty) && form.controls['name'].errors?.required">
+    name is required
+  </div>
+  <div class="validation-message"
+       *ngIf="(form.controls['name'].touched || form.controls['name'].dirty) && form.controls['name'].errors?.invalidName">
+    invalid name
+  </div>
+  <br><br>
+  <label for="inpmail1"><span class="asterisk">*</span>mail:</label>
+  <input id="inpmail1" formControlName="mail">
+  <div class="validation-message"
+       *ngIf="(form.controls['mail'].touched || form.controls['mail'].dirty) && form.controls['mail'].errors?.required">
+    mail is required
+  </div>
+  <div class="validation-message"
+       *ngIf="(form.controls['mail'].touched || form.controls['mail'].dirty) && form.controls['mail'].errors?.invalidMail">
+    invalid mail
+  </div>
+  <br><br>
+  <label for="inpage1"><span class="asterisk">*</span>age:</label>
+  <input id="inpage1" formControlName="age">
+  <div class="validation-message"
+       *ngIf="(form.controls['age'].touched || form.controls['age'].dirty) && form.controls['age'].errors?.required">age
+    is required
+  </div>
+  <div class="validation-message"
+       *ngIf="(form.controls['age'].touched || form.controls['age'].dirty) && form.controls['age'].errors?.invalidAge">
+    invalid age
+  </div>
+  <br><br>
+  <button [disabled]="!thisForm.valid">Add</button>
+  <h2 *ngIf="showSubmissionMessage">Saved successfully!!!</h2>
+</form>
+<br>
+<hr>
+<app-child></app-child>

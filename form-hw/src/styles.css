@@ -1,0 +1,16 @@
+.asterisk {
+  color: red;
+}
+.validation-message{
+  color: lightcoral;
+  margin-left: 70px;
+}
+
+input{
+  margin-left: 20px;
+}
+
+label {
+  display: inline-block;
+  width: 50px;
+}

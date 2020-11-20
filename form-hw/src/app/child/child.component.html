@@ -1,0 +1,31 @@
+<h4>Template driven form</h4>
+<form (ngSubmit)="onSubmit();" #thisF="ngForm">
+  <label for="inpname"><span class="asterisk">*</span>name:
+  </label>
+  <input id="inpname" [(ngModel)]="name" #nameModel="ngModel" name="name" required appNameValidator>
+  <div class="validation-message" *ngIf="nameModel.touched && nameModel.errors?.required">name is required</div>
+  <div class="validation-message" *ngIf="nameModel.touched && nameModel.errors?.invalidName">invalid name</div>
+  <br><br>
+  <label for="inpmail"><span class="asterisk">*</span>mail:</label>
+  <input id="inpmail" [(ngModel)]="mail" name="mail" #mailModel="ngModel" required
+         appMailValidator>
+  <div class="validation-message" *ngIf="(mailModel.touched || mailModel.dirty) && mailModel.errors?.required">mail is
+    required
+  </div>
+  <div class="validation-message" *ngIf="(mailModel.touched || mailModel.dirty) && mailModel.errors?.invalidMail">
+    invalid mail
+  </div>
+  <br><br>
+  <label for="inpage"><span class="asterisk">*</span>age:</label>
+  <input id="inpage" [(ngModel)]="age" name="age" #ageModel="ngModel" required
+         appAgeValidator>
+  <div class="validation-message" *ngIf="(ageModel.touched || ageModel.dirty) && ageModel.errors?.required">age is
+    required
+  </div>
+  <div class="validation-message" *ngIf="(ageModel.touched || ageModel.dirty) && ageModel.errors?.invalidAge">invalid
+    age
+  </div>
+  <br><br>
+  <button #btn [disabled]="thisF.invalid">Add</button>
+  <h2 *ngIf="showSubmissionMessage">Saved successfully!!!</h2>
+</form>
